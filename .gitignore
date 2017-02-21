@@ -1,0 +1,35 @@
+
+#IntellJ
+.idea/
+*.iws
+/out/
+.idea_modules/
+atlassian-ide-plugin.xml
+
+#Archives
+*.7z
+*.jar
+*.rar
+*.zip
+*.gz
+*.bzip
+*.bz2
+*.xz
+*.lzma
+*.cab
+
+#packing-only formats
+*.iso
+*.tar
+
+#package management formats
+*.dmg
+*.xpi
+*.gem
+*.egg
+*.deb
+*.rpm
+*.msi
+*.msm
+*.msp
+
