@@ -42,3 +42,7 @@ RUN docker-php-ext-configure gd \
 RUN pecl install -o -f redis && \
     docker-php-ext-enable redis && \
     rm -rf /tmp/pear
+
+# Install cachetool
+RUN curl -so /usr/local/bin/cachetool http://gordalina.github.io/cachetool/downloads/cachetool.phar && \
+    chmod +x /usr/local/bin/cachetool
