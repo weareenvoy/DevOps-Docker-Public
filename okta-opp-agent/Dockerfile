@@ -2,7 +2,7 @@ FROM centos:7
 MAINTAINER Aaron Picht <apicht@users.noreply.github.com>
 
 RUN yum update -y && \
-    yum install -y https://download.okta.com/static/agents/ProvisioningAgent/OktaProvisioningAgent-01.00.13.x86_64.rpm && \
+    yum install -y https://download.okta.com/static/agents/ProvisioningAgent/OktaProvisioningAgent-01.01.00.x86_64.rpm && \
     yum clean all
 
 RUN mv /opt/OktaProvisioningAgent/conf/settings.conf /opt/OktaProvisioningAgent/settings-default.conf
