@@ -3,8 +3,8 @@
 AgentInstallPrefix=$(rpm -q --queryformat '%{INSTPREFIXES}\n' OktaLDAPAgent|tail -1)
 . $AgentInstallPrefix/scripts/defs.sh
 
-if [ ! -f $AgentInstallPrefix/conf/log4j.properties ]; then
-    cp $AgentInstallPrefix/log4j-default.properties $AgentInstallPrefix/conf/log4j.properties
+if [ ! -f $AgentInstallPrefix/conf/logback.xml ]; then
+    cp $AgentInstallPrefix/logback-default.xml $AgentInstallPrefix/conf/logback.xml
 fi
 
 configure_instructions()
@@ -24,4 +24,4 @@ if [ ! -f $ConfigFile ]; then
     exit 1
 fi
 
-$JAVA -Dlog4j.configuration="$AgentInstallPrefix/conf/log4j.properties" -Dagent_home="$AgentInstallPrefix" -jar $AgentJar -mode normal -configFilePath $ConfigFile
+$JAVA -Dlogback.configurationFile="$AgentInstallPrefix/conf/logback.xml" -Dagent_home="$AgentInstallPrefix" -jar $AgentJar -mode normal -configFilePath $ConfigFile
