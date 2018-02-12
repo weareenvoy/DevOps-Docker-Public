@@ -1,4 +1,4 @@
-FROM php:7.1.12-fpm
+FROM php:7.1.14-fpm
 
 MAINTAINER Aaron Picht <apicht@users.noreply.github.com>
 
