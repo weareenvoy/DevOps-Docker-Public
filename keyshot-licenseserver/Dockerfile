@@ -2,13 +2,16 @@ FROM centos:7
 LABEL maintainer="Aaron Picht <apicht@users.noreply.github.com>"
 
 ARG LM_URL=http://www.keyshot.com/install/KeyShot_Floating_License_Server_Linux.zip
+ARG PUID=911
+ARG PGID=911
 
 RUN yum update -y && \
     yum install -y redhat-lsb-core unzip wget && \
     yum clean all && \
     rm -rf /var/cache/yum
 
-RUN useradd --create-home -s /bin/bash flexlm
+RUN groupadd -g $PGID flexlm && \
+    useradd --create-home -s /bin/bash -u $PUID -g $PGID flexlm
 WORKDIR /home/flexlm
 USER flexlm
 
