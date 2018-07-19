@@ -18,6 +18,7 @@ RUN apt-get update && \
         libpng12-dev \
         libfreetype6-dev \
         libssl-dev \
+        libgmp-dev \
         libmcrypt-dev && \
     apt-get clean && apt-get autoclean && apt-get --purge -y autoremove && \
     rm -rf /var/lib/apt/lists/*
