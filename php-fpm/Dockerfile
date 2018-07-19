@@ -1,6 +1,6 @@
 FROM php:7.1.14-fpm
 
-MAINTAINER Aaron Picht <apicht@users.noreply.github.com>
+MAINTAINER Alex Franks <alex-envoy@users.noreply.github.com>
 
 
 # Software Installation
@@ -29,6 +29,8 @@ RUN docker-php-ext-install mcrypt && \
     docker-php-ext-install pdo_pgsql && \
     docker-php-ext-install opcache && \
     docker-php-ext-install zip && \
+    docker-php-ext-install bcmath && \
+    docker-php-ext-install gmp && \
     docker-php-ext-install intl
 
 # Install gd extension
