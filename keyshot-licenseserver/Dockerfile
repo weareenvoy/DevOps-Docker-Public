@@ -1,7 +1,7 @@
 FROM centos:7
-LABEL maintainer="Aaron Picht <apicht@users.noreply.github.com>"
+LABEL maintainer="Alex Franks <alex-envoy@users.noreply.github.com>"
 
-ARG LM_URL=http://www.keyshot.com/install/KeyShot_Floating_License_Server_Linux.zip
+ARG LM_URL=https://www.keyshot.com/install/KeyShot_Floating_License_Server_Linux.zip
 ARG PUID=911
 ARG PGID=911
 
