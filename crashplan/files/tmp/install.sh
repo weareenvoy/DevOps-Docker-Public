@@ -43,6 +43,8 @@ apt-get install -qy --allow-downgrades --allow-remove-essential --allow-change-h
                 cpio \
                 gzip \
                 wget \
+                libgtk-3-0 \
+                libgtk-3-dev \
                 gtk2-engines \
                 ttf-ubuntu-font-family \
                 net-tools \
