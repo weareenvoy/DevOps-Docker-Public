@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.19
+FROM phusion/baseimage:0.9.22
 MAINTAINER gfjardim <gfjardim@gmail.com>
 
 #########################################
@@ -8,7 +8,7 @@ MAINTAINER gfjardim <gfjardim@gmail.com>
 ENV USER_ID="0" \
     GROUP_ID="0" \
     TERM="xterm" \
-    CP_VERSION="4.8.0"
+    CP_VERSION="6.9.4"
 
 # Use baseimage-docker's init system
 CMD ["/sbin/my_init"]

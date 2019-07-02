@@ -37,7 +37,7 @@ EOT
 apt-get update -qq
 
 # Install CrashPlan dependencies
-apt-get install -qy --force-yes --no-install-recommends \
+apt-get install -qy --allow-downgrades --allow-remove-essential --allow-change-held-packages --no-install-recommends \
                 grep \
                 sed \
                 cpio \
@@ -49,7 +49,7 @@ apt-get install -qy --force-yes --no-install-recommends \
                 paxctl
 
 # Install window manager and x-server
-apt-get install -qy --force-yes --no-install-recommends \
+apt-get install -qy --allow-downgrades --allow-remove-essential --allow-change-held-packages --no-install-recommends \
                 x11-xserver-utils \
                 openbox \
                 xfonts-base \
@@ -60,7 +60,7 @@ apt-get install -qy --force-yes --no-install-recommends \
                 xkb-data
 
 # Install noVNC dependencies
-apt-get install -qy --force-yes --no-install-recommends \
+apt-get install -qy --allow-downgrades --allow-remove-essential --allow-change-held-packages --no-install-recommends \
                 python \
                 python-numpy \
                 git

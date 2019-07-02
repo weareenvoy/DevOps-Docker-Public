@@ -10,7 +10,10 @@ RUNLVLDIR=/etc/rc2.d
 
 # Downloading Crashplan
 mkdir /tmp/crashplan
-curl -L http://download.code42.com/installs/linux/install/CrashPlan/CrashPlan_${CP_VERSION}_Linux.tgz | tar -xz --strip=1 -C /tmp/crashplan
+#curl -L http://download.code42.com/installs/linux/install/CrashPlan/CrashPlan_${CP_VERSION}_Linux.tgz | tar -xz --strip=1 -C /tmp/crashplan
+# CrashPlan went to a more obscure URL structure using build #'s which breaks
+# the above
+curl -L https://www.crashplanpro.com/client/installers/CrashPlanSmb_6.9.4_1525200006694_502_Linux.tgz | tar -xz --strip=1 -C /tmp/crashplan
 # curl -L http://192.168.0.100:88/CrashPlan_${CP_VERSION}_Linux.tgz | tar -xz --strip=1 -C /tmp/crashplan
 
 cd /tmp/crashplan
