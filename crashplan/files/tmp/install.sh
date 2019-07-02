@@ -63,6 +63,7 @@ apt-get install -qy --allow-downgrades --allow-remove-essential --allow-change-h
 apt-get install -qy --allow-downgrades --allow-remove-essential --allow-change-held-packages --no-install-recommends \
                 python \
                 python-numpy \
+                python-xdg \
                 git
 
 #########################################
