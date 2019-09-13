@@ -1,4 +1,4 @@
-FROM php:7.1.30-fpm
+FROM php:7.1.32-fpm
 
 MAINTAINER Alex Franks <alex-envoy@users.noreply.github.com>
 
