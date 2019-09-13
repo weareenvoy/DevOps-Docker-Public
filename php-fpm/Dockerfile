@@ -1,6 +1,6 @@
-FROM php:7.0.27-fpm
+FROM php:7.0.33-fpm
 
-MAINTAINER Aaron Picht <apicht@users.noreply.github.com>
+MAINTAINER Alex Franks <alex-envoy@users.noreply.github.com>
 
 
 # Software Installation
