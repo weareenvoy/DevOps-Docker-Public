@@ -1,7 +1,7 @@
 Keyshot Floating License Server Container Image
 -----------------------------------------------
 
-This image provides the [Keyshot License Server](https://luxion.atlassian.net/wiki/spaces/K8M/pages/311984257/Luxion+License+Server+Installation)
+This image provides the [Keyshot License Server](https://luxion.atlassian.net/wiki/spaces/K8M/pages/311951493/License+Server+Installation+Linux)
 
 ### Usage
 #### Preparation
