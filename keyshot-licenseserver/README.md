@@ -26,7 +26,7 @@ This will run the license server with the specified hostname and MAC address (mu
 ```
 docker run -d --restart=unless-stopped \
     --name=keyshot-licenseserver \
-    --hostname=envoy-keylicserv \
+    --hostname=envoy-keylic01 \
     --mac-address=12:34:56:78:9a:bc \
     -v $(pwd)/licenses:/licenses \
     -p 27000:27000 -p 43887:43887 \
