@@ -1,7 +1,7 @@
 Keyshot Floating License Server Container Image
 -----------------------------------------------
 
-This image provides the [Keyshot License Server](https://luxion.atlassian.net/wiki/spaces/K8M/pages/311951493/License+Server+Installation+Linux)
+This image provides the [Keyshot License Server](https://luxion.atlassian.net/wiki/spaces/K9M/pages/1062437463/License+Server+Installation+Linux)
 
 ### Usage
 #### Preparation
@@ -27,7 +27,7 @@ This will run the license server with the specified hostname and MAC address (mu
 docker run -d --restart=unless-stopped \
     --name=keyshot-licenseserver \
     --hostname=envoy-keylic01 \
-    --mac-address=12:34:56:78:9a:bc \
+    --mac-address=90:E6:BA:A6:58:02:12 \
     -v $(pwd)/licenses:/licenses \
     -p 27000:27000 -p 43887:43887 \
     weareenvoy/keyshot-licenseserver
