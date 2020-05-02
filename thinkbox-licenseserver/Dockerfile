@@ -31,6 +31,6 @@ VOLUME /licenses
 EXPOSE ${PORT} 43887
 
 ENV LM_LICENSE_FILE=/licenses \
-    PATH=/home/flexlm/linux-64:${PATH}
+    PATH=/home/flexlm/linux-x64:${PATH}
 
-CMD ["/home/flexlm/linux-64/lmgrd", "-z"]
+CMD ["/home/flexlm/linux-x64/lmgrd", "-z"]
