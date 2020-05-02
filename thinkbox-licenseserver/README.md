@@ -18,7 +18,6 @@ After:
 VENDOR thinkbox port=2708
 ```
 
-
 Place license file(s) in a folder to be mapped into the container. If using multiple license files, ensure ports are unique and forwarded when creating container.
 
 #### Launch
@@ -26,10 +25,10 @@ This will run the license server with the specified hostname and MAC address (mu
 ```
 docker run -d --restart=unless-stopped \
     --name=thinkbox-licenseserver \
-    --hostname=lvthn-lic02 \
-    --mac-address=90:e6:ba:a6:57:04 \
+    --hostname=${HOSTNAME} \
+    --mac-address=${MACADDR} \
     -v $(pwd)/licenses:/licenses \
-    -p 2708:2708 -p 43887:43887 \
+    -p ${PORT}:${PORT} -p 43887:43887 \
     weareenvoy/thinkbox-licenseserver
 ```
 
