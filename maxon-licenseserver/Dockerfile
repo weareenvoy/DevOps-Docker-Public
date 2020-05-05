@@ -10,8 +10,18 @@ ARG MAXON_PORT_ARG=5264
 ARG HOSTNAME_ARG=lvthn-cinemalic
 
 RUN yum update -y
-RUN yum install -y redhat-lsb-core wget net-tools
 RUN yum clean all
+RUN yum install -y systemd redhat-lsb-core wget net-tools
+# clean up systemd, h/t https://serverfault.com/questions/824975/failed-to-get-d-bus-connection-operation-not-permitted
+RUN yum clean all; \
+(cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
+rm -f /lib/systemd/system/multi-user.target.wants/*; \
+rm -f /etc/systemd/system/*.wants/*; \
+rm -f /lib/systemd/system/local-fs.target.wants/*; \
+rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
+rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
+rm -f /lib/systemd/system/basic.target.wants/*; \
+rm -f /lib/systemd/system/anaconda.target.wants/*;
 RUN rm -rf /var/cache/yum
 
 ENV RPM_URL=${RPM_URL_ARG}
@@ -27,6 +37,7 @@ USER $UNAME
 ENV HOSTNAME=${HOSTNAME_ARG}
 ENV MAXON_PORT=${MAXON_PORT_ARG}
 VOLUME /licenses
+VOLUME /sys/fs/cgroup
 EXPOSE ${MAXON_PORT}
 
 ENV LM_LICENSE_FILE=/licenses
