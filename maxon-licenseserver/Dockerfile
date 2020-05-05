@@ -7,7 +7,6 @@ ARG PUID=913
 ARG PGID=913
 ARG UNAME=maxon
 ARG MAXON_PORT_ARG=5264
-#ARG LMGRD_PORT_ARG=27008
 ARG HOSTNAME_ARG=lvthn-cinemalic
 
 RUN yum update -y
@@ -18,8 +17,6 @@ RUN rm -rf /var/cache/yum
 ENV RPM_URL=${RPM_URL_ARG}
 WORKDIR /tmp/$UNAME
 RUN wget -O /tmp/$UNAME/maxon.rpm ${RPM_URL}
-#RUN tar xzvf lm.tgz && \
-#ADD /tmp/$UNAME/maxon.rpm /maxon.rpm
 RUN yum install -y maxon.rpm
 #RUN rm -f maxon.rpm
 
@@ -27,10 +24,8 @@ RUN groupadd -g $PGID $UNAME
 RUN useradd --create-home -s /bin/bash -u $PUID -g $PGID $UNAME
 USER $UNAME
 
-#ENV MACADDR=${MACADDR_ARG}
 ENV HOSTNAME=${HOSTNAME_ARG}
 ENV MAXON_PORT=${MAXON_PORT_ARG}
-#ENV LMGRD_PORT=${LMGRD_PORT_ARG}
 VOLUME /licenses
 EXPOSE ${MAXON_PORT}
 
@@ -39,4 +34,3 @@ ENV PATH=/opt/$UNAME/licenseserver:${PATH}
 
 WORKDIR /opt/maxon/licenseserver
 CMD ["/opt/maxon/licenseserver/bin/licenseserver", "g_runLicenseServer=true"]
-#CMD ["/home/flexlm/linux-x64/lmgrd", "-z"]
