@@ -1,57 +1,16 @@
-Thinkbox Deadline Floating License Server Container Image
+Maxon Floating License Server Container Image
 -----------------------------------------------
 
-This image provides the [Thinkbox License Server](https://www.awsthinkbox.com/license-server-download)
+This image provides the [Maxon License Server](https://www.maxon.net/en-us/try/)
 
 ### Usage
 #### Preparation
-Edit your license file to specify the Thinkbox vendor ports:
-Find the lines below and append `port=2708`
+You can customize the service port used by the MLS service if needed, which defaults to `5264`. This can either be done directly in the Dockerfile, using an ENV named `MAXON_PORT` or in the DockerHub build interface.
 
-Before:
-```
-VENDOR thinkbox
-```
-
-After:
-```
-VENDOR thinkbox port=2708
-```
-
-You can also customize the service port used by the LMGRD service if needed, which defaults to 27000:
-Before:
-```
-SERVER HOSTNAME MACADDRESS 27000
-```
-
-After:
-```
-SERVER HOSTNAME MACADDRESS 27008
-```
-
-Additional information regarding ports is available in the [Thinkbox Docs](https://docs.thinkboxsoftware.com/products/licensing/1.0/Licensing%20Guide/setport.html)
-
-Just as the port numbers are customizable when running the container, the MAC address and hostname can either be specified upon container build or at runtime.  **NOTE** These need to match what is already present in the license file provided from Thinkbox, or the services will refuse to start. Check the logs in the container if it starts cleanly but the service is not available on the specified ports.
-
-Place license file(s) in a folder to be mapped into the `/licenses` path in the container. If using multiple license files, ensure ports are unique and forwarded when creating container.
+Additional information regarding ports is available in the (very sparse) [Maxon Docs](https://support.maxon.net/kb/faq.php?id=54?id=54&lang=en-US)
 
 #### Launch
-This will run the license server with the specified hostname and MAC address (must match MAC address present in license file):
-```
-docker run -d --restart=unless-stopped \
-    -e "MACADDR=ab:cd:ef:01:23:45" \
-    -e "HOSTNAME=hostname" \
-    -e "LMGRD_PORT=#####" \
-    -e "THINKBOX_PORT=####" \
-    --name=thinkbox-licenseserver \
-    --hostname=${HOSTNAME} \
-    --mac-address=${MACADDR} \
-    -v $(pwd)/licenses:/licenses \
-    -p ${THINKBOX_PORT}:${THINKBOX_PORT} -p ${LMGRD_PORT}:${LMGRD_PORT} \
-    weareenvoy/thinkbox-licenseserver
-```
+The service automatically starts on the specified port (see `MAXON_PORT` ENV config above). You should be able to access the license server in a web browser at http://hostname:port using the default login of `admin`/`admin`
 
-This will output server/license status:
-```
-docker exec -ti thinkbox-licenseserver lmstat -a
-```
+#### Maintenance
+By default the Maxon license server will use `/var/opt/maxon/licenserver` as the path into which it saves its running configuration. If you'd like to persist this configuration between restarts, you should save the contents of that directory to the Docker host machine and then mount it as a `VOLUME`. If you attempt to mount this volume before the licene server is up and running for the first time, the service will refuse to start.
