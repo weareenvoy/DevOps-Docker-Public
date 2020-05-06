@@ -32,7 +32,6 @@ RUN rm -rf /var/cache/yum
 
 RUN groupadd -g $PGID $UNAME 
 RUN useradd --create-home -s /bin/bash -u $PUID -g $PGID $UNAME
-USER $UNAME
 
 ENV RPM_URL=${RPM_URL_ARG}
 WORKDIR /tmp/$UNAME
@@ -55,4 +54,8 @@ ENV LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/opt/maxon/licenseserver/lib64
 
 WORKDIR /opt/maxon/licenseserver
 RUN ls -lh /opt/maxon/licenseserver
+
+# maybe don't drop into $USER - see what happens
+#USER $UNAME
+
 CMD ["/opt/maxon/licenseserver/bin/licenseserver", "g_runLicenseServer=true"]
