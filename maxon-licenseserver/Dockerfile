@@ -14,7 +14,7 @@ RUN yum clean all
 RUN yum install -y redhat-lsb-core wget net-tools
 RUN yum clean all;
 RUN rm -rf /var/cache/yum
-## don't need this since centos generously provides a systemd image
+#### don't need this since centos generously provides a systemd image #### 
 # clean up systemd since we "need" it, h/t https://serverfault.com/questions/824975/failed-to-get-d-bus-connection-operation-not-permitted
 #RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done)
 #RUN rm -f /lib/systemd/system/multi-user.target.wants/*
@@ -26,9 +26,13 @@ RUN rm -rf /var/cache/yum
 #RUN rm -f /lib/systemd/system/anaconda.target.wants/*
 #VOLUME /sys/fs/cgroup
 #CMD /usr/sbin/init
+###
 
 #RUN ls -lh /lib64/libstdc*
-#RUN ln -s 
+
+RUN groupadd -g $PGID $UNAME 
+RUN useradd --create-home -s /bin/bash -u $PUID -g $PGID $UNAME
+USER $UNAME
 
 ENV RPM_URL=${RPM_URL_ARG}
 WORKDIR /tmp/$UNAME
@@ -36,16 +40,13 @@ RUN wget -O /tmp/$UNAME/maxon.rpm ${RPM_URL}
 RUN yum install -y maxon.rpm
 #RUN rm -f maxon.rpm
 
-RUN groupadd -g $PGID $UNAME 
-RUN useradd --create-home -s /bin/bash -u $PUID -g $PGID $UNAME
-USER $UNAME
-
-ENV HOSTNAME=${HOSTNAME_ARG}
-ENV MAXON_PORT=${MAXON_PORT_ARG}
 # these need to be writable
 VOLUME /opt/maxon/licenseserver
 VOLUME /var/opt/maxon/licenseserver
-EXPOSE ${MAXON_PORT}
+EXPOSE ${MAXON_PORT_ARG}
+
+ENV HOSTNAME=${HOSTNAME_ARG}
+ENV MAXON_PORT=${MAXON_PORT_ARG}
 
 #ENV LM_LICENSE_FILE=/licenses
 ENV PATH=/opt/$UNAME/licenseserver/bin:${PATH}
