@@ -22,6 +22,8 @@ rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
 rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
 rm -f /lib/systemd/system/basic.target.wants/*; \
 rm -f /lib/systemd/system/anaconda.target.wants/*;
+RUN ls -lh /lib64/libstdc*
+#RUN ln -s 
 RUN rm -rf /var/cache/yum
 
 ENV RPM_URL=${RPM_URL_ARG}
@@ -36,12 +38,15 @@ USER $UNAME
 
 ENV HOSTNAME=${HOSTNAME_ARG}
 ENV MAXON_PORT=${MAXON_PORT_ARG}
-VOLUME /licenses
+#VOLUME /licenses
 VOLUME /sys/fs/cgroup
 EXPOSE ${MAXON_PORT}
 
 ENV LM_LICENSE_FILE=/licenses
-ENV PATH=/opt/$UNAME/licenseserver:${PATH}
+ENV PATH=/opt/$UNAME/licenseserver/bin:${PATH}
+# add the maxon lib path to LD_LIBRARY_PATH
+ENV LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/opt/maxon/licenseserver/lib64
 
 WORKDIR /opt/maxon/licenseserver
+RUN ls -lh /opt/maxon/licenseserver
 CMD ["/opt/maxon/licenseserver/bin/licenseserver", "g_runLicenseServer=true"]
