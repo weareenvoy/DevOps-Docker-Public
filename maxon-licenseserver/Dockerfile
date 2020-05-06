@@ -42,7 +42,9 @@ USER $UNAME
 
 ENV HOSTNAME=${HOSTNAME_ARG}
 ENV MAXON_PORT=${MAXON_PORT_ARG}
-#VOLUME /licenses
+# these need to be writable
+VOLUME /opt/maxon/licenseserver
+VOLUME /var/opt/maxon/licenseserver
 EXPOSE ${MAXON_PORT}
 
 #ENV LM_LICENSE_FILE=/licenses
