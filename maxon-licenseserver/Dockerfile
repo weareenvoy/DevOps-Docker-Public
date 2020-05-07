@@ -28,16 +28,14 @@ RUN rm -rf /var/cache/yum
 #CMD /usr/sbin/init
 ###
 
-#RUN ls -lh /lib64/libstdc*
-
 RUN groupadd -g $PGID $UNAME 
 RUN useradd --create-home -s /bin/bash -u $PUID -g $PGID $UNAME
 
 ENV RPM_URL=${RPM_URL_ARG}
 WORKDIR /tmp/$UNAME
-RUN wget -O /tmp/$UNAME/maxon.rpm ${RPM_URL}
+RUN wget -O maxon.rpm ${RPM_URL}
 RUN yum install -y maxon.rpm
-#RUN rm -f maxon.rpm
+RUN rm -f maxon.rpm
 
 # these need to be writable
 VOLUME /opt/maxon/licenseserver
@@ -52,10 +50,12 @@ ENV PATH=/opt/$UNAME/licenseserver/bin:${PATH}
 # add the maxon lib path to LD_LIBRARY_PATH
 ENV LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/opt/maxon/licenseserver/lib64
 
-WORKDIR /opt/maxon/licenseserver
-RUN ls -lh /opt/maxon/licenseserver
+#WORKDIR /opt/maxon/licenseserver
 
 # maybe don't drop into $USER - see what happens
 #USER $UNAME
 
-CMD ["/opt/maxon/licenseserver/bin/licenseserver", "g_runLicenseServer=true"]
+#CMD ["/opt/maxon/licenseserver/bin/licenseserver", "g_runLicenseServer=true"]
+# if you're gonna use systemd, use it
+ENTRYPOINT ["/usr/sbin/init"]
+CMD ["/opt/maxon/licenseserver/bin/start_lsrv.sh"]
