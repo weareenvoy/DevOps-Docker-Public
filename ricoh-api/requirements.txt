@@ -3,7 +3,7 @@ Flask==0.12.2
 gunicorn==19.7.1
 itsdangerous==0.24
 Jinja2==2.9.6
-MarkupSafe==1.0
+MarkupSafe==1.1.1
 -e git+https://github.com/WTFox/printers.git#egg=99aa7c8ace6140d8fb850315453f0e1e9370e8c101
 requests==2.8.1
 Werkzeug==0.12.2
