@@ -1,0 +1,10 @@
+[Unit]
+Description=Gunicorn instance to serve the Ricoh API for managing users on the printers
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/ricohapi
+Environment="PATH=/var/www/ricohapi/venv/bin"
+ExecStart=/var/www/ricohapi/venv/bin/gunicorn --bind unix:/tmp/ricohapi.sock ricohapi.app:app
