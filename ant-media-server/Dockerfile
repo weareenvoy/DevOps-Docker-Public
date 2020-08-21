@@ -19,7 +19,7 @@ RUN cd home \
 
 RUN cd home \
     && pwd \
-	&& wget -O ${AntMediaServerFile} ${AntMediaServerURL}
+	&& wget -O ${AntMediaServerFile} ${AntMediaServerURL} \
     && ./install_ant-media-server.sh ${AntMediaServerFile}
 
 
