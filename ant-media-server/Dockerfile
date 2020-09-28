@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-ARG AntMediaServerURL=https://artifacts.weareenvoy.net/docker-artifacts/ant-media-server-2.1.0-community-2.1.0-20200720_1340.zip
+ARG AntMediaServerURL=https://artifacts.weareenvoy.net/docker-artifacts/ant-media-server-enterprise-2.1.1-20200902_1011.zip
 ARG AntMediaServerFile=ant-media-server.zip
 ARG MongoDBServer=
 ARG MongoDBUsername=
