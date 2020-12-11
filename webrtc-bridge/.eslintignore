@@ -1,0 +1,9 @@
+_tmp
+build
+dist
+lib
+coverage
+node_modules
+sendTestMessage.js
+**/src/public
+car-headless.js

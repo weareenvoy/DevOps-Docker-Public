@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1"
+    />
+
+    <title>T-Mobile RC Car</title>
+    <style>
+      body {
+        margin: 1rem;
+      }
+
+      #video-canvas {
+        width: 100vw;
+        margin-top: 1rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="container">
+      <button type="button" onclick="wsavc.playStream()">Start Video</button>
+      <button type="button" onclick="wsavc.stopStream()">Stop Video</button>
+      <button type="button" onclick="wsavc.disconnect()">Disconnect</button>
+
+      <div>
+        <canvas id="video-canvas"></canvas>
+      </div>
+
+      <script type="text/javascript" src="http-live-player.js"></script>
+      <script type="text/javascript">
+        const canvas = document.getElementById("video-canvas");
+
+        const BRIDGE_SERVER_URL = "wss://lvthn-rc-server.herokuapp.com/";
+        var wsavc = new WSAvcPlayer(canvas, "webgl", 1, 35);
+        wsavc.connect(BRIDGE_SERVER_URL);
+        window.wsavc = wsavc;
+      </script>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "heroku-shim",
+  "private": true,
+  "version": "1.0.0",
+  "engines": {
+    "node": "12.x.x"
+  },
+  "scripts": {
+    "build": "cd ./packages/bridge && npm install && npm run build",
+    "start": "node ./packages/bridge/lib/index.js"
+  }
+}
