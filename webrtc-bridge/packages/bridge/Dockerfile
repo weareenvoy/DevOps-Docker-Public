@@ -4,8 +4,6 @@ WORKDIR /
 
 COPY . .
 
-#WORKDIR packages/bridge
-
 RUN npm install
 
 ENV NODE_ENV=production
