@@ -11,7 +11,7 @@
     "lib/**/*"
   ],
   "scripts": {
-    "dev": "npm run build && concurrently -i -k -n 'bridge,tsc' -c 'green,cyan' 'nodemon' 'nodemon --config ../../config/nodemon.server.tsc.json'",
+    "dev": "npm run build && concurrently -i -k -n 'bridge,tsc' -c 'green,cyan' 'nodemon' 'nodemon --config ./nodemon.server.tsc.json'",
     "lint": "eslint ./src --ext .ts --env node",
     "clean": "rimraf ./lib ./tsconfig.tsBuildInfo",
     "build": "tsc --build ./tsconfig.build.json",
@@ -32,7 +32,7 @@
       "./package.json",
       "./src",
       "./tsconfig.build.json",
-      "../../config/tsconfig.node.json"
+      "./tsconfig.node.json"
     ]
   },
   "dependencies": {
