@@ -2,7 +2,10 @@ FROM node:12
 
 WORKDIR /
 
-COPY . .
+RUN mkdir /app
+COPY . /app
+
+WORKDIR /app
 
 RUN npm install
 
