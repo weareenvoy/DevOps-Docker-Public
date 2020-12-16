@@ -1,4 +1,5 @@
 FROM php:7.3-alpine
+LABEL maintainer="alex@weareenvoy.com"
 
 RUN set -eux; \
   apk add --no-cache --virtual .composer-rundeps \
