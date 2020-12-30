@@ -56,10 +56,12 @@ RUN set -eux; \
   rm -f /tmp/installer.php; \
   find /tmp -type d -exec chmod -v 1777 {} +
 
-COPY docker-entrypoint.sh /docker-entrypoint.sh
-
 WORKDIR /app
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+COPY docker-entrypoint.sh docker-entrypoint.sh
+
+RUN chmod +x docker-entrypoint.sh
+
+ENTRYPOINT ["docker-entrypoint.sh"]
 
 CMD ["composer"]
