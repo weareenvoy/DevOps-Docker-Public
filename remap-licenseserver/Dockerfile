@@ -23,7 +23,7 @@ WORKDIR /root
 RUN wget -O ${LIC_INSTALLER_FILE} ${LIC_INSTALLER} && \
     tar xzvf ${LIC_INSTALLER_FILE}
 
-RUN pwd && ls -lh
+#RUN pwd && ls -lh
 #RUN ./${LIC_INSTALLER_BIN} --help
 RUN ./${LIC_INSTALLER_BIN} --mode unattended --unattendedmodeui none --acceptEULA 1
 
