@@ -35,5 +35,5 @@ ENV REVISION_PORT=${REVISION_PORT_ARG}
 COPY *.lic /usr/local/revision/floatinglicenses/Licenses/
 EXPOSE ${REVISION_PORT}
 
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/bin/bash", "-c"]
 CMD ["/sbin/rvlserver"]
