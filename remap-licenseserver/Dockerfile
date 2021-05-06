@@ -26,7 +26,7 @@ ENV HOSTNAME=${HOSTNAME_ARG}
 ENV REVISION_PORT=${REVISION_PORT_ARG}
 #ENV RVLSERVER_PORT=${RVLSERVER_PORT_ARG}
 #VOLUME /licenses
-COPY *.lic /usr/local/revision/floatinglicenses/Licenses/
+#COPY *.lic /usr/local/revision/floatinglicenses/Licenses/
 COPY *.sh ./
 
 #RUN pwd && ls -lh
