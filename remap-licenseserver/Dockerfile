@@ -20,7 +20,7 @@ RUN yum update -y && \
 
 WORKDIR /root
 
-RUN wget -O ${LIC_INSTALLER_FILE} ${LIC_INSTALLER} && \
+RUN wget --no-verbose -O ${LIC_INSTALLER_FILE} ${LIC_INSTALLER} && \
     tar xzvf ${LIC_INSTALLER_FILE}
 
 #RUN pwd && ls -lh
@@ -35,4 +35,5 @@ ENV REVISION_PORT=${REVISION_PORT_ARG}
 COPY *.lic /usr/local/revision/floatinglicenses/Licenses/
 EXPOSE ${REVISION_PORT}
 
+ENTRYPOINT ["/bin/bash"]
 CMD ["/sbin/rvlserver"]
