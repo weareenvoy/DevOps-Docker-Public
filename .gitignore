@@ -33,3 +33,5 @@ atlassian-ide-plugin.xml
 *.msm
 *.msp
 
+# license files
+*.lic

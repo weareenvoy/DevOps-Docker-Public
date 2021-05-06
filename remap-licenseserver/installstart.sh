@@ -6,6 +6,7 @@ WORKING_DIR="/root"
 RVL_INSTALLER_BIN="RVLFloatLicenseSoftware-2.3-linux-x64-installer.run"
 RVL_SERVER_BIN="/sbin/rvlserver"
 RVL_STATUS_BIN="/sbin/rvlstatus"
+STATUS_INTERVAL=10
 INSTALLER_BIN_GLOB="*.run"
 
 cd ${WORKING_DIR}
@@ -17,7 +18,9 @@ sleep 2
 ${RVL_STATUS_BIN}
 #${RVL_SERVER_BIN}
 
+# output rvlstatus every ${STATUS_INTERVAL} secs
 while [ true ]
 do
-	sleep 1
+	sleep ${STATUS_INTERVAL}
+	${RVL_STATUS_BIN}
 done
