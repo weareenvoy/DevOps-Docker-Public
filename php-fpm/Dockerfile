@@ -18,25 +18,24 @@ RUN apt-get update && \
         libpng-dev \
         libfreetype6-dev \
         libssl-dev \
-        libgmp-dev \
+        libgmp-dev && \
     apt-get clean && apt-get autoclean && apt-get --purge -y autoremove && \
     rm -rf /var/lib/apt/lists/*
+
+RUN php -m
 
 # Install basic extensions
 RUN docker-php-ext-install pdo_mysql && \
     docker-php-ext-install mysqli && \
     docker-php-ext-install pdo_pgsql && \
     docker-php-ext-install opcache && \
-    docker-php-ext-install zip && \
     docker-php-ext-install bcmath && \
     docker-php-ext-install gmp && \
     docker-php-ext-install intl
 
 # Install gd extension
 RUN docker-php-ext-configure gd \
-        --enable-gd-native-ttf \
-        --with-jpeg-dir=/usr/lib \
-        --with-freetype-dir=/usr/include/freetype && \
+        --with-freetype && \
     docker-php-ext-install gd
 
 # Install cachetool
