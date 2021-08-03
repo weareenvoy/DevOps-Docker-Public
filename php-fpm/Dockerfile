@@ -1,4 +1,4 @@
-FROM php:7.1.32-fpm
+FROM php:7.4.22-fpm
 
 MAINTAINER Alex Franks <alex-envoy@users.noreply.github.com>
 
@@ -41,11 +41,5 @@ RUN docker-php-ext-configure gd \
         --with-freetype-dir=/usr/include/freetype2 && \
     docker-php-ext-install gd
 
-# Install Redis extension
-RUN pecl install -o -f redis && \
-    docker-php-ext-enable redis && \
-    rm -rf /tmp/pear
-
 # Install cachetool
-RUN curl -so /usr/local/bin/cachetool http://gordalina.github.io/cachetool/downloads/cachetool.phar && \
-    chmod +x /usr/local/bin/cachetool
+RUN curl -so /usr/local/bin/cachetool http://gordalina.github.io/cachetool/downloads/cachetool.phar && chmod +x /usr/local/bin/cachetool
