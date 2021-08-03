@@ -19,13 +19,11 @@ RUN apt-get update && \
         libfreetype6-dev \
         libssl-dev \
         libgmp-dev \
-        libmcrypt-dev && \
     apt-get clean && apt-get autoclean && apt-get --purge -y autoremove && \
     rm -rf /var/lib/apt/lists/*
 
 # Install basic extensions
-RUN docker-php-ext-install mcrypt && \
-    docker-php-ext-install pdo_mysql && \
+RUN docker-php-ext-install pdo_mysql && \
     docker-php-ext-install mysqli && \
     docker-php-ext-install pdo_pgsql && \
     docker-php-ext-install opcache && \
@@ -38,7 +36,7 @@ RUN docker-php-ext-install mcrypt && \
 RUN docker-php-ext-configure gd \
         --enable-gd-native-ttf \
         --with-jpeg-dir=/usr/lib \
-        --with-freetype-dir=/usr/include/freetype2 && \
+        --with-freetype-dir=/usr/include/freetype && \
     docker-php-ext-install gd
 
 # Install cachetool
