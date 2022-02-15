@@ -12,11 +12,11 @@ RUN yum update -y && \
 
 RUN groupadd -g $PGID flexlm && \
     useradd --create-home -s /bin/bash -u $PUID -g $PGID flexlm
-WORKDIR /home/flexlm
+WORKDIR /home/flexlm/luxion_flexlm
 USER flexlm
 
 RUN wget -O lm.zip ${LM_URL} && \
-    unzip lm.zip && \
+    unzip -j lm.zip && \
     rm -f lm.zip
 
 VOLUME /licenses
