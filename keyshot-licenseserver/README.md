@@ -37,3 +37,7 @@ This will output server/license status:
 ```
 docker exec -ti keyshot-licenseserver lmstat -a
 ```
+
+#### License
+Envoy maintains 2 floating licenses for Keyshot, linked to the it-vendors@weareenvoy.com email address. Licenses renew annually in February.
+
