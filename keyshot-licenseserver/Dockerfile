@@ -12,12 +12,15 @@ RUN yum update -y && \
 
 RUN groupadd -g $PGID flexlm && \
     useradd --create-home -s /bin/bash -u $PUID -g $PGID flexlm
-WORKDIR /home/flexlm/luxion_flexlm
+WORKDIR /home/flexlm
 USER flexlm
 
+WORKDIR /home/flexlm/luxion_flexlm
 RUN wget -O lm.zip ${LM_URL} && \
     unzip -j lm.zip && \
-    rm -f lm.zip
+    rm lm.zip
+
+#   unzip --help && \
 
 VOLUME /licenses
 EXPOSE 27000 43887
