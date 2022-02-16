@@ -6,7 +6,7 @@ ARG PUID=911
 ARG PGID=911
 
 RUN yum update -y && \
-    yum install -y redhat-lsb-core unzip wget && \
+    yum install -y redhat-lsb-core unzip wget net-tools which && \
     yum clean all && \
     rm -rf /var/cache/yum
 
