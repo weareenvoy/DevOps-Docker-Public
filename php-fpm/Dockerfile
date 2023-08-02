@@ -1,4 +1,4 @@
-FROM php:7.4.22-fpm
+FROM php:7.4.33-fpm
 
 MAINTAINER Alex Franks <alex-envoy@users.noreply.github.com>
 
@@ -31,6 +31,7 @@ RUN docker-php-ext-install pdo_mysql && \
     docker-php-ext-install opcache && \
     docker-php-ext-install bcmath && \
     docker-php-ext-install gmp && \
+    docker-php-ext-install imagick && \
     docker-php-ext-install intl
 
 # Install gd extension
