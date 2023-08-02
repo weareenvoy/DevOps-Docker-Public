@@ -11,6 +11,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         curl \
         libicu-dev \
+        libcurl-dev \
         libmemcached-dev \
         libz-dev \
         libpq-dev \
