@@ -19,7 +19,6 @@ RUN apt-get update && \
         libfreetype6-dev \
         libssl-dev \
         libgmp-dev && \
-        libmagickwand-dev && \
     apt-get clean && apt-get autoclean && apt-get --purge -y autoremove && \
     rm -rf /var/lib/apt/lists/*
 
