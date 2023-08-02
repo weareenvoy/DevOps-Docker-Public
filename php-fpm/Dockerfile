@@ -19,6 +19,7 @@ RUN apt-get update && \
         libfreetype6-dev \
         libssl-dev \
         libgmp-dev && \
+        libmagickwand-dev && \
     apt-get clean && apt-get autoclean && apt-get --purge -y autoremove && \
     rm -rf /var/lib/apt/lists/*
 
@@ -31,13 +32,16 @@ RUN docker-php-ext-install pdo_mysql && \
     docker-php-ext-install opcache && \
     docker-php-ext-install bcmath && \
     docker-php-ext-install gmp && \
-    docker-php-ext-install imagick && \
     docker-php-ext-install intl
 
 # Install gd extension
 RUN docker-php-ext-configure gd \
         --with-freetype && \
     docker-php-ext-install gd
+
+# Install imagick extension
+RUN printf "\n" | pecl install imagick
+RUN docker-php-ext-enable imagick
 
 # Install cachetool
 RUN curl -so /usr/local/bin/cachetool http://gordalina.github.io/cachetool/downloads/cachetool.phar && chmod +x /usr/local/bin/cachetool
