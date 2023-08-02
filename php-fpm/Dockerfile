@@ -11,7 +11,6 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         curl \
         libicu-dev \
-        libcurl-dev \
         libmemcached-dev \
         libz-dev \
         libpq-dev \
@@ -33,9 +32,7 @@ RUN docker-php-ext-install pdo_mysql && \
     docker-php-ext-install pdo_pgsql && \
     docker-php-ext-install opcache && \
     docker-php-ext-install bcmath && \
-    docker-php-ext-install curl && \
     docker-php-ext-install gmp && \
-    docker-php-ext-install gd && \
     docker-php-ext-install xml && \
     docker-php-ext-install zip && \
     docker-php-ext-install intl
@@ -51,3 +48,7 @@ RUN docker-php-ext-enable imagick
 
 # Install cachetool
 RUN curl -so /usr/local/bin/cachetool http://gordalina.github.io/cachetool/downloads/cachetool.phar && chmod +x /usr/local/bin/cachetool
+
+# Install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
