@@ -19,6 +19,8 @@ RUN apt-get update && \
         libfreetype6-dev \
         libssl-dev \
         libgmp-dev && \
+        imagemagick && \
+        libmagickwand-dev --no-install-recommends && \
     apt-get clean && apt-get autoclean && apt-get --purge -y autoremove && \
     rm -rf /var/lib/apt/lists/*
 
